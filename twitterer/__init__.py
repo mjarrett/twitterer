@@ -18,7 +18,7 @@ def tweet(user='1710_13',text='test string',media=None,in_reply_to_status_id=Non
     return status
 
 
-def get_api(user='1710_13'):
+def get_api(user):
     #Authorize user
     with open(f'{os.path.dirname(__file__)}/credentials.json','r') as f:
         credentials = json.load(f)
