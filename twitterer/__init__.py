@@ -3,6 +3,9 @@ import json
 import datetime
 import os
 
+CREDENTIALS_FILE = os.path.expanduser('~/.twitterer/credentials.json')
+
+
 def tweet(user='1710_13',text='test string',media=None,in_reply_to_status_id=None):
     
     
@@ -20,7 +23,7 @@ def tweet(user='1710_13',text='test string',media=None,in_reply_to_status_id=Non
 
 def get_api(user):
     #Authorize user
-    with open(f'{os.path.dirname(__file__)}/credentials.json','r') as f:
+    with open(CREDENTIALS_FILE,'r') as f:
         credentials = json.load(f)
 
     auth = tweepy.OAuthHandler(credentials['api_key'], credentials['api_secret_key'])
@@ -43,7 +46,7 @@ def get_tweet(tweet_id):
     return api.get_status(tweet_id)
 
 def list_users():
-    with open(f'{os.path.dirname(__file__)}/credentials.json','r') as f:
+    with open(CREDENTIALS_FILE,'r') as f:
         credentials = json.load(f)
     for user in credentials.keys():
         print(user)
